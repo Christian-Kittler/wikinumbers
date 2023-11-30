@@ -15,17 +15,24 @@ async function getArticles() {
       rawArticles.forEach((r) => {
         const title = r.article;
         const forbiddenPrefixes = [
-          "Portal:",
-          "Special:",
-          "Wikipedia:",
-          "Help:",
-          "Main_Page",
-          "File:",
-          "File_talk:",
-          "Template:",
-          "User:",
+          "Portal",
+          "Special",
+          "Wikipedia",
+          "Help",
+          "File",
+          "File_talk",
+          "Template",
+          "User",
         ];
-        if (forbiddenPrefixes.some((p) => title.startsWith(p))) return;
+        if (
+          forbiddenPrefixes.some(
+            (p) =>
+              title === "Main_Page" ||
+              title.startsWith(`${p}:`) ||
+              title.startsWith(`${p}%`)
+          )
+        )
+          return;
 
         counts[r.article] = (counts[r.article] ?? 0) + r.views;
       });
