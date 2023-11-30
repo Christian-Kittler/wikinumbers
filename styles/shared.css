@@ -14,12 +14,18 @@ body {
     gap: 1rem;
 }
 
+h1 {
+    margin-bottom: 0;
+}
+
 .btn {
     width: 8rem;
     text-decoration: none;
     padding: 1rem 2rem;
     border: 5px solid rgb(100, 100, 200);
     text-align: center;
+    background-color: white;
+    border-radius: 0.5rem;
 }
 
 .btn:hover {

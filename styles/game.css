@@ -1,0 +1,35 @@
+p {
+    font-size: large;
+    margin: 0;
+}
+.article {
+    border: 5px solid darkgrey;
+    display: flex;
+    align-items: center;
+    width: 56rem;
+    gap: 1rem;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+}
+
+.article div {
+    flex-grow: 1;
+}
+
+.article h2 {
+    margin: 0;
+}
+
+.article span {display: none}
+
+.article .btn {
+    display: none;
+}
+
+.article:nth-of-type(2) .btn{
+    display: block;
+}
+
+.article:nth-of-type(1) span {
+    display: block;
+}
