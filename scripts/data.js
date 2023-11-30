@@ -23,6 +23,7 @@ async function getArticles() {
           "File:",
           "File_talk:",
           "Template:",
+          "User:",
         ];
         if (forbiddenPrefixes.some((p) => title.startsWith(p))) return;
 
