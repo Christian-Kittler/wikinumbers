@@ -31,3 +31,10 @@ h1 {
 .btn:hover {
     border-color: rgb(150, 150, 250);
 }
+
+.back-btn {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+}

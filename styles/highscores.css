@@ -1,0 +1,13 @@
+table {
+    border: 1px solid darkgrey;
+    border-collapse: collapse;
+}
+
+th {
+    border-bottom: 1px solid darkgray;
+}
+
+th, td {
+    padding: 1rem;
+    text-align: center;
+}
