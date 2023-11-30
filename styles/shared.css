@@ -1,0 +1,27 @@
+body {
+    font-family: sans-serif;
+    color: rgb(62, 62, 62);
+    background: #eee;
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: stretch;
+    gap: 1rem;
+}
+
+.btn {
+    width: 8rem;
+    text-decoration: none;
+    padding: 1rem 2rem;
+    border: 5px solid rgb(100, 100, 200);
+    text-align: center;
+}
+
+.btn:hover {
+    border-color: rgb(150, 150, 250);
+}
