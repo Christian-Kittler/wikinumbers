@@ -16,10 +16,39 @@ function insertDataIntoElement(article, index) {
 }
 
 async function initGame(numberOfArticles) {
-  const articles = await readData();
+  articles = await readData();
   for (let i = 0; i < numberOfArticles; ++i) {
     insertDataIntoElement(getRandomArticle(articles), i);
   }
 }
 
+function updateGame() {
+  const container = document.getElementsByClassName("container").item(0);
+  const score = container.querySelector("p");
+  score.innerText = "Score: " + (parseInt(score.innerText.substring(6)) + 1);
+  const firstArticle = container.querySelector(".article");
+  container.removeChild(firstArticle);
+  container.appendChild(firstArticle);
+  insertDataIntoElement(getRandomArticle(articles), 3);
+}
+
+function gameOver() {}
+
+function checkAnswer(answer) {
+  const elements = document.getElementsByClassName("article");
+  const firstViews = parseInt(elements.item(0).querySelector("span").innerText);
+  const secondViews = parseInt(
+    elements.item(1).querySelector("span").innerText
+  );
+  if (
+    (firstViews >= secondViews && answer === "more") ||
+    (firstViews <= secondViews && answer === "less")
+  ) {
+    updateGame();
+  } else {
+    gameOver();
+  }
+}
+
+let articles;
 initGame(4);
