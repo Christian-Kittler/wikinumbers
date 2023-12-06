@@ -41,8 +41,8 @@ function checkAnswer(answer) {
     elements.item(1).querySelector("span").innerText
   );
   if (
-    (firstViews >= secondViews && answer === "more") ||
-    (firstViews <= secondViews && answer === "less")
+    (secondViews >= firstViews && answer === "more") ||
+    (secondViews <= firstViews && answer === "less")
   ) {
     updateGame();
   } else {
