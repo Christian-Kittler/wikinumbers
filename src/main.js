@@ -22,9 +22,7 @@ async function initGame(numberOfArticles) {
   }
 }
 
-function updateGame() {
-  const container = document.getElementsByClassName("container").item(0);
-  const score = container.querySelector("p");
+function updateGame(container, score) {
   score.innerText = "Score: " + (parseInt(score.innerText.substring(6)) + 1);
   const firstArticle = container.querySelector(".article");
   container.removeChild(firstArticle);
@@ -32,9 +30,27 @@ function updateGame() {
   insertDataIntoElement(getRandomArticle(articles), 3);
 }
 
-function gameOver() {}
+function gameOver(score) {
+  const currentScore = parseInt(score.innerText.substring(6));
+  for (let i = 1; i <= 3; ++i) {
+    const highscore = localStorage.getItem(i.toString());
+    if (highscore === null || JSON.parse(highscore).score < currentScore) {
+      localStorage.setItem(
+        i.toString(),
+        JSON.stringify({
+          score: currentScore,
+          date: new Date().toLocaleDateString(),
+        })
+      );
+      break;
+    }
+  }
+  window.location.href = "../index.html";
+}
 
 function checkAnswer(answer) {
+  const container = document.getElementsByClassName("container").item(0);
+  const score = container.querySelector("p");
   const elements = document.getElementsByClassName("article");
   const firstViews = parseInt(elements.item(0).querySelector("span").innerText);
   const secondViews = parseInt(
@@ -44,9 +60,9 @@ function checkAnswer(answer) {
     (secondViews >= firstViews && answer === "more") ||
     (secondViews <= firstViews && answer === "less")
   ) {
-    updateGame();
+    updateGame(container, score);
   } else {
-    gameOver();
+    gameOver(score);
   }
 }
 
