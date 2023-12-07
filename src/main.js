@@ -48,15 +48,16 @@ function gameOver(score) {
   highscores = highscores === null ? [] : JSON.parse(highscores);
   if (highscores.length === 0) {
     highscores.push(newHighscore);
-  }
-  for (let i = 0; i < highscores.length; ++i) {
-    if (highscores[i].score < currentScore) {
-      highscores.splice(i, 0, newHighscore);
-      break;
+  } else {
+    for (let i = 0; i < highscores.length; ++i) {
+      if (highscores[i].score < currentScore) {
+        highscores.splice(i, 0, newHighscore);
+        break;
+      }
     }
-  }
-  if (highscores.length === 4) {
-    highscores.pop();
+    if (highscores.length === 4) {
+      highscores.pop();
+    }
   }
   localStorage.setItem("highscores", JSON.stringify(highscores));
   document.body.classList.add("game-over");
