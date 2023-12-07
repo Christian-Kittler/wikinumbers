@@ -20,7 +20,8 @@ p {
     margin: 0;
 }
 
-.article span {display: none}
+.article .formatted-views {display: none}
+.article .views { display: none;}
 
 .article .btn {
     display: none;
@@ -30,6 +31,6 @@ p {
     display: block;
 }
 
-.article:nth-of-type(1) span {
+.article:nth-of-type(1) .formatted-views {
     display: block;
 }

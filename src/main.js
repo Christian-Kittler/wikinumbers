@@ -4,6 +4,11 @@ async function readData() {
   return articles;
 }
 
+function formatNumber(num) {
+  const formatter = Intl.NumberFormat("en", { notation: "compact" });
+  return formatter.format(num);
+}
+
 function getRandomArticle(articles) {
   const index = Math.floor(Math.random() * articles.length);
   return articles.splice(index, 1)[0];
@@ -12,7 +17,10 @@ function getRandomArticle(articles) {
 function insertDataIntoElement(article, index) {
   const element = document.getElementsByClassName("article").item(index);
   element.querySelector("h2").innerText = article.title.replaceAll("_", " ");
-  element.querySelector("span").innerText = article.views;
+  element.querySelector(".views").innerText = article.views;
+  element.querySelector(".formatted-views").innerText = formatNumber(
+    article.views
+  );
 }
 
 async function initGame(numberOfArticles) {
@@ -52,9 +60,11 @@ function checkAnswer(answer) {
   const container = document.getElementsByClassName("container").item(0);
   const score = container.querySelector("p");
   const elements = document.getElementsByClassName("article");
-  const firstViews = parseInt(elements.item(0).querySelector("span").innerText);
+  const firstViews = parseInt(
+    elements.item(0).querySelector(".views").innerText
+  );
   const secondViews = parseInt(
-    elements.item(1).querySelector("span").innerText
+    elements.item(1).querySelector(".views").innerText
   );
   if (
     (secondViews >= firstViews && answer === "more") ||
