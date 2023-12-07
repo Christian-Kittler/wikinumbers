@@ -40,20 +40,25 @@ function updateGame(container, score) {
 
 function gameOver(score) {
   const currentScore = parseInt(score.innerText.substring(6));
-  for (let i = 1; i <= 3; ++i) {
-    const highscore = localStorage.getItem(i.toString());
-    if (highscore === null || JSON.parse(highscore).score < currentScore) {
-      localStorage.setItem(
-        i.toString(),
-        JSON.stringify({
-          score: currentScore,
-          date: new Date().toLocaleDateString(),
-        })
-      );
+  const newHighscore = {
+    score: currentScore,
+    date: new Date().toLocaleDateString(),
+  };
+  let highscores = localStorage.getItem("highscores");
+  highscores = highscores === null ? [] : JSON.parse(highscores);
+  if (highscores.length === 0) {
+    highscores.push(newHighscore);
+  }
+  for (let i = 0; i < highscores.length; ++i) {
+    if (highscores[i].score < currentScore) {
+      highscores.splice(i, 0, newHighscore);
       break;
     }
   }
-
+  if (highscores.length === 4) {
+    highscores.pop();
+  }
+  localStorage.setItem("highscores", JSON.stringify(highscores));
   document.body.classList.add("game-over");
 }
 
