@@ -6,7 +6,7 @@ p {
     border: 5px solid darkgrey;
     display: flex;
     align-items: center;
-    width: 56rem;
+    width: min(80%, 56rem);
     gap: 1rem;
     padding: 1rem 2rem;
     border-radius: 0.5rem;
@@ -45,4 +45,7 @@ body.game-over .article .btn{
 
 body.game-over .back-btn {
     display: block;
+}
+body.game-over #result {
+    color: lightcoral
 }
