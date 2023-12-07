@@ -34,3 +34,15 @@ p {
 .article:nth-of-type(1) .formatted-views {
     display: block;
 }
+
+.back-btn {
+    display: none;
+}
+
+body.game-over .article .btn{
+    display: none;
+}
+
+body.game-over .back-btn {
+    display: block;
+}

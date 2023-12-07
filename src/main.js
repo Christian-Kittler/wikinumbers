@@ -53,7 +53,8 @@ function gameOver(score) {
       break;
     }
   }
-  window.location.href = "../index.html";
+
+  document.body.classList.add("game-over");
 }
 
 function checkAnswer(answer) {
@@ -66,6 +67,13 @@ function checkAnswer(answer) {
   const secondViews = parseInt(
     elements.item(1).querySelector(".views").innerText
   );
+
+  const result = document.querySelector("#result");
+  const sign = secondViews <= firstViews ? ">" : "<";
+  result.textContent = `${
+    elements.item(0).querySelector(".formatted-views").innerText
+  } ${sign} ${elements.item(1).querySelector(".formatted-views").innerText}`;
+
   if (
     (secondViews >= firstViews && answer === "more") ||
     (secondViews <= firstViews && answer === "less")
