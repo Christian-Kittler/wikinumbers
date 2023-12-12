@@ -61,6 +61,20 @@ function gameOver(score) {
   }
   localStorage.setItem("highscores", JSON.stringify(highscores));
   document.body.classList.add("game-over");
+
+  for (const article of document.querySelectorAll(".article")) {
+    const heading = article.querySelector("h2");
+
+    const anchor = document.createElement("a");
+    anchor.textContent = heading.textContent;
+    anchor.href = `https://en.wikipedia.org/wiki/${anchor.textContent.replaceAll(
+      " ",
+      "_"
+    )}`;
+
+    heading.textContent = "";
+    heading.appendChild(anchor);
+  }
 }
 
 function checkAnswer(answer) {
