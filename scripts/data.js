@@ -23,13 +23,14 @@ async function getArticles() {
           "File_talk",
           "Template",
           "User",
+          "Category",
         ];
         if (
           forbiddenPrefixes.some(
             (p) =>
               title === "Main_Page" ||
-              title.startsWith(`${p}:`) ||
-              title.startsWith(`${p}%`)
+              title.toLowerCase().startsWith(`${p.toLowerCase()}:`) ||
+              title.toLowerCase().startsWith(`${p.toLowerCase()}%`)
           )
         )
           return;
